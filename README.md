@@ -7,6 +7,21 @@ ROS 2 Lyrical · Gazebo Sim 10 · TurtleBot3 `burger_cam` · YOLO11n · 2D LiDAR
 > is **frozen** as of 2026-10-20. See [Final Status](final_docs_20261018/FINAL_STATUS.md), [Validation and Limitations](docs/VALIDATION_AND_LIMITATIONS.md), and the [published evidence index](evidence/README.md).
 > No licence to reuse the original code is granted; see [Licensing](#licensing).
 
+## Simulation Preview
+
+### Disaster-Site Environment
+
+![Overhead view of the simulated disaster environment](disaster_site/evidence/world_overhead.png)
+
+### Robot Camera and Victim Detection
+
+![Robot camera view during victim detection](disaster_site/evidence/robot_camera_discovery_2m.png)
+
+### Detection Validation
+
+![Victim detection validation overlay](disaster_site/evidence/validation_overlay.png)
+
+
 ## Problem
 
 After a building collapse, a robot has to find people and report **where** they are, without an operator.
