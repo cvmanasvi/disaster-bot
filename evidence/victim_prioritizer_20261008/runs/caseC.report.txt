@@ -1,0 +1,36 @@
+== runs/caseC
+objects (world): {'victim(world)': ('person', 7.35, 6.65), 'vic_L': ('person', 1.14, 1.38), 'vic_R': ('person', 3.53, 1.14), 'post_a': ('post', 2.07, 1.19), 'post_b': ('post', 1.77, 0.67)}
+mission: t=16.90 [MISSION] OUTSIDE_SEARCH -> ENTERING (entrance_confirmed); t=69.40 [MISSION] ENTERING -> INSIDE (verified)
+explore steps used: 2; final state VICTIM_HOLD at t=175.00 (range 0.58 m <= 0.80 m)
+t=90.7 cues_prioritized nav=(2.49,1.83) -> chosen #2 (best)
+     #2 score 0.798 feasible True conf 0.769 range 0.72 access 0.0 risk 0.00 terms {'confidence': 0.423, 'distance': 1.0, 'access': 1.0} checks ['cue']
+     #1 score 0.766 feasible True conf 0.812 range 1.34 access 0.0 risk 0.00 terms {'confidence': 0.53, 'distance': 0.801, 'access': 1.0} checks ['cue']
+t=90.7 prioritized nav=(2.49,1.83) -> chosen #None (none_feasible)
+     #1 score 0.148 feasible False conf 0.681 range 1.36 access None risk 1.00 terms {'confidence': 0.202, 'distance': 0.792, 'access': 0.0} checks ['+0:corridor_blocked', '+10:corridor_blocked', '-10:corridor_blocked', '+20:corridor_blocked', '-20:corridor_blocked']
+t=90.7 look track (1.82,1.996) {}
+t=115.9 prioritized nav=(2.49,1.83) -> chosen #None (none_feasible)
+     #1 score 0.200 feasible False conf 0.739 range 1.35 access None risk 1.00 terms {'confidence': 0.347, 'distance': 0.795, 'access': 0.0} checks ['+0:narrow_keepout', '+10:corridor_blocked', '-10:corridor_blocked', '+20:corridor_blocked', '-20:corridor_blocked']
+t=146.1 prioritized nav=(2.61,1.87) -> chosen #None (none_feasible)
+     #1 score 0.200 feasible False conf 0.752 range 1.44 access None risk 1.00 terms {'confidence': 0.381, 'distance': 0.762, 'access': 0.0} checks ['+0:corridor_blocked', '+10:narrow_keepout', '-10:corridor_blocked', '+20:narrow_keepout', '-20:corridor_blocked']
+t=175.0 cues_prioritized nav=(2.85,2.22) -> chosen #9 (best)
+     #9 score 0.763 feasible True conf 0.729 range 0.56 access 0.0 risk 0.00 terms {'confidence': 0.324, 'distance': 1.0, 'access': 1.0} checks ['cue']
+     #10 score 0.536 feasible True conf 0.672 range 2.17 access 0.0 risk 0.00 terms {'confidence': 0.181, 'distance': 0.494, 'access': 1.0} checks ['cue']
+t=175.0 prioritized nav=(2.85,2.22) -> chosen #2 (best)
+     #2 score 0.622 feasible True conf 0.677 range 0.58 access 0.0 risk 0.48 terms {'confidence': 0.193, 'distance': 1.0, 'access': 1.0} checks ['+0:reached']
+t=175.0 confirmed track (3.393,2.22) {}
+t=175.0 victim_hold track (3.393,2.22) {'candidate_id': 2, 'priority_score': 0.622063, 'candidates_considered': 1, 'reason': 'range 0.58 m <= 0.80 m'}
+GT min centre distance to victim(world) (person): 7.167 m at t=168.1
+GT min centre distance to vic_L (person): 1.493 m at t=108.6
+GT min centre distance to vic_R (person): 0.695 m at t=166.0
+GT min centre distance to post_a (post): 0.638 m at t=86.1
+GT min centre distance to post_b (post): 0.688 m at t=71.9
+VICTIM_HOLD t=175.0: robot GT (2.821,1.083); reported victim world (3.39,1.02) -> nearest person vic_R (estimate error 0.182 m)
+   GT robot-centre distance to victim(world): 7.176 m
+   GT robot-centre distance to vic_L: 1.707 m
+   GT robot-centre distance to vic_R: 0.711 m
+   robot GT at end of run t=211.3: (2.829,1.087) moved 0.008 m after hold
+SAFETY controller zeroed 0 / capped 0; live keep-out cuts 0; pre-rotation refusals 0; escapes 0; tilt guard 0; FAULT_HOLD 0
+safety.log stop/limit lines (excluding startup config): []
+pubwatch samples 22 (sim 14.3560..203.6910):
+   p_yolo: ['1']   p_est: ['1']   p_search: ['1']   p_safety: ['1']   n_yolo: ['1']   n_est: ['1']   n_search: ['0', '1']   n_safety: ['1']   pub_camera: ['1']   pub_det: ['1']   pub_dist: ['1']   pub_cmdraw: ['1']   pub_cmd: ['1']   pub_found: ['0', '1']
+/imu messages 40460; max |roll| 0.01 deg (t=73.9); max |pitch| 0.78 deg (t=7.5)

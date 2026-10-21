@@ -1,0 +1,23 @@
+######## off
+module: ~/ros2_ws/install/my_first_robot/lib/python3.14/site-packages/my_first_robot/autonomous_search.py  mode=off
+decision t=845.0 (live prioritized -> #1, checks [['+0:corridor_blocked', '+10:ok']])
+   replay: started=True state=EXPLORE_TURN structure_filtered delta=0
+   replay approach candidates: [(0.0, 'corridor_blocked'), (10.0, 'ok')]
+   replay plan: sector=VICTIM heading=+41.5 target=0.591 offset=10.0
+   commands captured (not published): 0
+######## on
+module: ~/ros2_ws/install/my_first_robot/lib/python3.14/site-packages/my_first_robot/autonomous_search.py  mode=on
+decision t=845.0 (live prioritized -> #1, checks [['+0:corridor_blocked', '+10:ok']])
+   replay: started=True state=EXPLORE_TURN structure_filtered delta=0
+   replay ranking: [(1, 0.587866, ['+0:corridor_blocked', '+10:ok'])]
+   replay approach candidates: [(0.0, 'corridor_blocked'), (10.0, 'ok')]
+   replay plan: sector=VICTIM heading=+41.5 target=0.591 offset=10.0
+   commands captured (not published): 0
+######## on <auditor-scratch>/oldbuild
+module: <auditor-scratch>/oldbuild/my_first_robot/autonomous_search.py  mode=on
+decision t=845.0 (live prioritized -> #1, checks [['+0:corridor_blocked', '+10:ok']])
+   replay: started=True state=EXPLORE_TURN structure_filtered delta=0
+   replay ranking: [(1, 0.587866, ['+0:corridor_blocked', '+10:ok'])]
+   replay approach candidates: [(0.0, 'corridor_blocked'), (10.0, 'ok')]
+   replay plan: sector=VICTIM heading=+41.5 target=0.591 offset=10.0
+   commands captured (not published): 0

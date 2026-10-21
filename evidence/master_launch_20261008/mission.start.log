@@ -1,0 +1,8 @@
+launch started 14:06:05
+scan-ready
+started
+SIGINT to launch pid 80852 pgid 80852 at 14:31:59
+launch exited after ~4s
+== leftover check 14:32:12
+NO ORPHAN PROCESSES
+END 14:32:12 -> VICTIM_HOLD (range 0.84 m <= 0.80 m) sim=952.0360

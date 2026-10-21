@@ -1,0 +1,31 @@
+== runs/caseB
+objects (world): {'victim(world)': ('person', 7.35, 6.65), 'vic_L': ('person', 1.28, 2.01), 'vic_R': ('person', 3.6, 2.01)}
+mission: t=17.30 [MISSION] OUTSIDE_SEARCH -> ENTERING (entrance_confirmed); t=69.30 [MISSION] ENTERING -> INSIDE (verified)
+explore steps used: 0; final state VICTIM_HOLD at t=124.00 (range 0.78 m <= 0.80 m)
+t=90.6 cues_prioritized nav=(2.45,1.83) -> chosen #1 (best)
+     #1 score 0.784 feasible True conf 0.877 range 1.63 access 0.0 risk 0.00 terms {'confidence': 0.692, 'distance': 0.691, 'access': 1.0} checks ['cue']
+     #2 score 0.773 feasible True conf 0.863 range 1.62 access 0.0 risk 0.00 terms {'confidence': 0.658, 'distance': 0.694, 'access': 1.0} checks ['cue']
+t=90.6 prioritized nav=(2.45,1.83) -> chosen #1 (best)
+     #1 score 0.797 feasible True conf 0.895 range 1.66 access 0.0 risk 0.00 terms {'confidence': 0.737, 'distance': 0.682, 'access': 1.0} checks ['+0:ok']
+t=90.6 confirmed track (1.378,3.057) {}
+t=90.6 approach_candidates +0:ok
+t=90.6 approach_move track (1.378,3.057) {'offset_deg': 0.0, 'move_m': 0.8592007583190719}
+t=124.0 cues_prioritized nav=(1.88,2.48) -> chosen #4 (best)
+     #4 score 0.876 feasible True conf 0.858 range 0.78 access 0.0 risk 0.00 terms {'confidence': 0.646, 'distance': 1.0, 'access': 1.0} checks ['cue']
+     #3 score 0.779 feasible True conf 0.809 range 1.22 access 0.0 risk 0.00 terms {'confidence': 0.523, 'distance': 0.846, 'access': 1.0} checks ['cue']
+t=124.0 victim_hold track (1.347,3.009) {'candidate_id': 1, 'priority_score': 0.796638, 'candidates_considered': 1, 'reason': 'range 0.78 m <= 0.80 m'}
+GT min centre distance to victim(world) (person): 7.610 m at t=113.0
+GT min centre distance to vic_L (person): 0.907 m at t=117.5
+GT min centre distance to vic_R (person): 1.736 m at t=95.7
+VICTIM_HOLD t=124.0: robot GT (1.888,1.326); reported victim world (1.35,1.81) -> nearest person vic_L (estimate error 0.212 m)
+   GT robot-centre distance to victim(world): 7.628 m
+   GT robot-centre distance to vic_L: 0.915 m
+   GT robot-centre distance to vic_R: 1.844 m
+   robot GT at end of run t=159.1: (1.888,1.325) moved 0.001 m after hold
+SAFETY controller zeroed 0 / capped 0; live keep-out cuts 0; pre-rotation refusals 0; escapes 0; tilt guard 0; FAULT_HOLD 0
+safety.log STOP/limit lines: 1
+pubwatch samples 16 (sim 12.9830..145.7960):
+   p_yolo: ['1']   p_est: ['1']   p_search: ['1']   p_safety: ['1']   n_yolo: ['1']   n_est: ['1']   n_search: ['0', '1']   n_safety: ['1']   pub_camera: ['1']   pub_det: ['1']   pub_dist: ['1']   pub_cmdraw: ['1']   pub_cmd: ['1']   pub_found: ['1']
+~/disaster_bot_test_logs/victim_prioritizer_20261008/../full_mission_20261006/tools/imu_tilt_heading.py:18: DeprecationWarning: Use read_next_ext() which returns both send and receive timestamps instead of just receive timestamp.
+  _, data, _ = rd.read_next()
+/imu messages 30352; max |roll| 0.01 deg (t=74.6); max |pitch| 0.78 deg (t=6.4)

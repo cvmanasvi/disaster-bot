@@ -1,0 +1,7 @@
+detect_entrances (frozen) on scan_spawn.npz at GT (-0.01,-1.20): 0 candidate(s): []
+detect_entrances (frozen) on blocked_facade_door_start.npz at GT (6.05,-1.59): 0 candidate(s): []
+scan_spawn.npz: 99 returns, distance to modelled geometry median 0.6 cm, 95% 1.7 cm, max 2.2 cm
+scan_near_victim.npz: 354 returns, distance to modelled geometry median 0.6 cm, 95% 2.1 cm, max 5.1 cm
+blocked_deadend_C_start.npz: 344 returns, distance to modelled geometry median 0.5 cm, 95% 1.7 cm, max 2.8 cm
+blocked_corridor_start.npz: 311 returns, distance to modelled geometry median 0.5 cm, 95% 1.8 cm, max 3.8 cm
+robot GT over session t 143..963 s: z 0.0100..0.0104 m, max |roll| 0.04 deg, max |pitch| 1.97 deg

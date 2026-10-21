@@ -1,0 +1,15 @@
+== pre-run audit 2026-10-08T14:06:00+05:30
+-- before cleanup:
+(none)
+-- after cleanup:
+(none)
+-- ros2 node list:
+(end)
+-- hashes:
+2b2b92e13e4b3bb5802f47ad734201948621797c9c4cef1e66158a3e9f09485f  ~/ros2_ws/install/my_first_robot/lib/python3.14/site-packages/my_first_robot/autonomous_search.py
+ccecad4fa63744f0ed2878176daf7adf093dfdc0ea2128cd3045c5999f94bea7  ~/ros2_ws/install/my_first_robot/lib/python3.14/site-packages/my_first_robot/safety_controller.py
+ba84a17c1d8728a0326b00ee2fd3019ba25238f1d97d6bbfabc566660f6b2c99  ~/ros2_ws/install/my_first_robot/lib/python3.14/site-packages/my_first_robot/exploration_grid.py
+4e1e976c93a8bfc3a6dff762df1d41b0be2972bcc2457c5efd38e6b32bae13f7  ~/ros2_ws/install/my_first_robot/lib/python3.14/site-packages/my_first_robot/victim_distance_estimator.py
+67188d387c57942ebeecd146603cda0121ee84fe74df5dd124f91ff497fcdbe1  ~/ros2_ws/install/my_first_robot/lib/python3.14/site-packages/my_first_robot/yolo_detector.py
+16a7241518aab9a19ece9add808cc1478843f55c5621af0dceae12afbf8ebe93  ~/ros2_ws/install/my_first_robot/lib/python3.14/site-packages/my_first_robot/victim_rescue.py
+CLEAN

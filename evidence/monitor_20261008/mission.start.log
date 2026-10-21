@@ -1,0 +1,10 @@
+launch started 14:48:34
+monitor started
+scan-ready
+started
+SIGINT to launch pid 101475 pgid 101475 at 15:14:48
+launch exited after ~3s
+helpers stopped with TERM
+== leftover check 15:15:07
+NO ORPHAN PROCESSES
+END 15:15:07 -> VICTIM_HOLD (range 0.83 m <= 0.80 m) sim=910.9210

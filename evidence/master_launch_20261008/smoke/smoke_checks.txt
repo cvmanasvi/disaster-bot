@@ -1,0 +1,94 @@
+== nodes
+/autonomous_search
+/robot_state_publisher
+/ros_gz_bridge
+/ros_gz_image
+/safety_controller
+/victim_distance_estimator
+/yolo_detector
+== /cmd_vel_raw
+Publisher count: 1
+Node name: autonomous_search
+Node namespace: /
+Endpoint type: PUBLISHER
+Subscription count: 1
+Node name: safety_controller
+Node namespace: /
+Endpoint type: SUBSCRIPTION
+== /cmd_vel
+Publisher count: 1
+Node name: safety_controller
+Node namespace: /
+Endpoint type: PUBLISHER
+Subscription count: 1
+Node name: ros_gz_bridge
+Node namespace: /
+Endpoint type: SUBSCRIPTION
+== /camera/image_raw
+Publisher count: 1
+Node name: ros_gz_image
+Node namespace: /
+Endpoint type: PUBLISHER
+Subscription count: 1
+Node name: yolo_detector
+Node namespace: /
+Endpoint type: SUBSCRIPTION
+== /victim_detections
+Publisher count: 1
+Node name: yolo_detector
+Node namespace: /
+Endpoint type: PUBLISHER
+Subscription count: 1
+Node name: victim_distance_estimator
+Node namespace: /
+Endpoint type: SUBSCRIPTION
+== /victim_distance
+Publisher count: 1
+Node name: victim_distance_estimator
+Node namespace: /
+Endpoint type: PUBLISHER
+Subscription count: 1
+Node name: autonomous_search
+Node namespace: /
+Endpoint type: SUBSCRIPTION
+== /victim_found
+Publisher count: 1
+Node name: autonomous_search
+Node namespace: /
+Endpoint type: PUBLISHER
+Subscription count: 0
+== /scan
+Publisher count: 1
+Node name: ros_gz_bridge
+Node namespace: /
+Endpoint type: PUBLISHER
+Subscription count: 3
+Node name: autonomous_search
+Node namespace: /
+Endpoint type: SUBSCRIPTION
+Node name: safety_controller
+Node namespace: /
+Endpoint type: SUBSCRIPTION
+Node name: victim_distance_estimator
+Node namespace: /
+Endpoint type: SUBSCRIPTION
+== processes
+   4311    3653 /usr/libexec/gsd-keyboard
+  79552   79523 /bin/sh -c ruby /opt/ros/lyrical/opt/gz_tools_vendor/bin/gz sim -r -s -v2 ~/ros2_ws/disaster_site/world/earthquake_disaster.sdf --force-version 10
+  79553   79523 /opt/ros/lyrical/lib/robot_state_publisher/robot_state_publisher --ros-args -r __node:=robot_state_publisher --params-file /tmp/launch_params_grh7lv96
+  79554   79552 /opt/ros/lyrical/opt/gz_sim_vendor/libexec/gz/sim10/gz-sim-main -r -s -v2 ~/ros2_ws/disaster_site/world/earthquake_disaster.sdf
+  79556   79523 /opt/ros/lyrical/lib/ros_gz_bridge/parameter_bridge --ros-args -p config_file:=/opt/ros/lyrical/share/turtlebot3_gazebo/params/turtlebot3_burger_cam_bridge.yaml --ros-args
+  79557   79523 /opt/ros/lyrical/lib/ros_gz_image/image_bridge /camera/image_raw --ros-args
+  79558   79523 /usr/bin/python3 ~/ros2_ws/install/my_first_robot/lib/my_first_robot/safety_controller --ros-args --params-file /tmp/launch_params_5ito0yeb
+  79559   79523 ~/ros2_ws/yolo_env/bin/python src/my_first_robot/my_first_robot/yolo_detector.py --ros-args -p use_sim_time:=true
+  79560   79523 /usr/bin/python3 ~/ros2_ws/install/my_first_robot/lib/my_first_robot/victim_distance_estimator --ros-args --params-file /tmp/launch_params__2ku037b
+  79874   79523 /usr/bin/python3 ~/ros2_ws/install/my_first_robot/lib/my_first_robot/autonomous_search --ros-args --params-file /tmp/launch_params_9ify32aj
+== search params
+Boolean value is: True
+Boolean value is: True
+Integer value is: 30
+Boolean value is: True
+String value is: 
+Boolean value is: True
+Boolean value is: True
+Boolean value is: True

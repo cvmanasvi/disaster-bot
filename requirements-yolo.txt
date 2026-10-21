@@ -1,0 +1,31 @@
+# Direct requirements of the separate YOLO Python environment (<workspace>/yolo_env).
+#
+# Only yolo_detector.py runs in this environment (started by
+# disaster_bot_full.launch.py with <workspace>/yolo_env/bin/python). Every other
+# Disaster Bot node runs on the system ROS 2 Python.
+#
+# Recorded from the validated environment on 2026-10-12 (Python 3.14.4, CPU inference).
+# The full, exact package set is in requirements-yolo.lock.txt.
+#
+# NOT pip dependencies (they come from the ROS 2 Lyrical installation through
+# PYTHONPATH after `source /opt/ros/lyrical/setup.bash`):
+#   rclpy, sensor_msgs, std_msgs, cv_bridge
+# The venv is created with include-system-site-packages = false.
+#
+# GPU/CUDA is NOT required: the validated runs used CPU inference
+# (torch.cuda.is_available() == False). Note that the default PyPI torch wheel
+# for Linux still pulls in NVIDIA CUDA runtime wheels (proprietary licences) as
+# dependencies. A CPU-only torch build has not been validated.
+#
+# Licensing: ultralytics is AGPL-3.0 — see docs/YOLO_MODEL.md.
+
+ultralytics==8.4.137      # YOLO inference (from ultralytics import YOLO)
+torch==2.13.0             # ultralytics backend
+torchvision==0.28.0       # ultralytics backend
+opencv-python==5.0.0.93   # cv2 used by yolo_detector.py (resolves to this venv copy, not system OpenCV)
+numpy==2.5.2              # used by cv2 / ultralytics
+
+# Needed so the ROS 2 Python message/rclpy imports work inside this isolated venv
+# (verified: both modules are loaded when yolo_detector.py's imports run).
+empy==4.2.1
+lark==1.3.1

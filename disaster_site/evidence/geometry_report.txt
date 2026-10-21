@@ -1,0 +1,107 @@
+== Disaster site geometry check (2 cm raster; obstacle boxes from layout.py)
+boxes: 59 (damaged_room 25, collapsed_wall 10, fallen_beam 1, debris 7, rubble 16)
+non-wall boxes thinner than 0.25 m (narrow-obstacle risk): none
+boxes lower than 0.35 m: none (LiDAR plane 0.171 m; robot top 0.189 m)
+
+-- Spawn
+spawn (0.0, -1.2) yaw 0.0: nearest obstacle surface 1.092 m from base_footprint origin (robot circumscribed radius 0.125)
+
+-- Reachability from spawn (free = clearance > 0.125 m, robot can rotate everywhere; [min] = clearance > 0.089 m straight-drive minimum)
+  inside door (2.45,0.8)               reachable=True  [min True ] clearance 0.931 m
+  lobby east (7.0,1.7)                 reachable=True  [min True ] clearance 0.699 m
+  B west room (1.5,3.5)                reachable=True  [min True ] clearance 0.637 m
+  C collapsed room (1.6,5.7)           reachable=True  [min True ] clearance 0.597 m
+  E south pocket (5.0,3.0)             reachable=True  [min True ] clearance 0.400 m
+  E north lane (6.25,4.3)              reachable=True  [min True ] clearance 0.448 m
+  D west (4.5,5.6)                     reachable=True  [min True ] clearance 0.740 m
+  D NE / victim approach (6.45,6.65)   reachable=True  [min True ] clearance 0.480 m
+  corridor north of choke (3.75,4.4)   reachable=True  [min True ] clearance 0.320 m
+  corridor south of choke (3.75,2.8)   reachable=True  [min True ] clearance 0.220 m
+
+-- Passage bottlenecks (clear width = 2 x max clearance radius along the best path)
+  facade doorway (yard -> lobby)                     clear width 0.920 m -> traversable (rotate-anywhere)
+  lobby -> B opening                                 clear width 1.000 m -> traversable (rotate-anywhere)
+  B -> C doorway                                     clear width 0.920 m -> traversable (rotate-anywhere)
+  narrow passage lobby -> E                          clear width 0.760 m -> traversable (rotate-anywhere)
+  wide opening lobby -> E                            clear width 1.000 m -> traversable (rotate-anywhere)
+  E: around beam east end (pocket -> north lane)     clear width 0.800 m -> traversable (rotate-anywhere)
+  E -> D doorway                                     clear width 0.897 m -> traversable (rotate-anywhere)
+  D: west of pile to victim approach                 clear width 0.960 m -> traversable (rotate-anywhere)
+  BLOCKED corridor (lobby -> D)                      clear width 0.000 m -> BLOCKED (< robot width 0.178)
+  BLOCKED facade doorway (yard -> lobby)             clear width 0.000 m -> BLOCKED (< robot width 0.178)
+  BLOCKED beam west end (pocket -> north lane, west) clear width 0.000 m -> BLOCKED (< robot width 0.178)
+
+-- Dead ends
+  C collapsed room reachable when the B->C doorway is closed: False (False = C (and B beyond it) is a dead-end branch, single entrance)
+  B/C reachable with the lobby->B opening closed: False
+  corridor from the lobby: deepest reachable y 3.07 m (corridor mouth y 2.675): dead-end stub
+  corridor alcove from D side: reachable from spawn True; deepest south y 4.17 m (dead-end alcove)
+
+-- Victim
+victim origin (7.35, 6.65) (static). plate x 7.10..7.60, y 6.375..6.725
+  plate -> pile_2           0.257 m
+  plate -> east             0.340 m
+  plate -> north            0.420 m
+  plate -> pile_1           0.450 m
+  plate -> r_d_1            1.345 m
+  plate -> mid_n_4          1.520 m
+  person origin -> north wall face 0.475 m, east wall face 0.575 m
+  person origin -> fallen beam surface 2.935 m; -> pile (nearest surface) 0.597 m
+  free robot positions 0.75-1.05 m from the person (rotate-anywhere, reachable): 2130 cells (0.85 m^2); nearest reachable centre 0.316 m
+
+-- Victim visibility from the camera (z 0.093 m -> torso 1.0 m or head 1.6 m, through/over box heights)
+  spawn                            victim visible: False  range 10.75 m
+  first inside scan (2.45,0.75)    victim visible: False  range 7.67 m
+  lobby centre (4.0,1.9)           victim visible: False  range 5.81 m
+  lobby east (7.1,1.8)             victim visible: False  range 4.86 m
+  E north lane (6.25,4.3)          victim visible: False  range 2.59 m
+  E east gap (7.4,4.0)             victim visible: False  range 2.65 m
+  D door (6.25,5.0)                victim visible: False  range 1.98 m
+  D inside door (6.0,5.4)          victim visible: False  range 1.84 m
+  D west (4.5,5.6)                 victim visible: True  range 3.04 m
+  D (5.8,6.2)                      victim visible: True  range 1.61 m
+  visibility region: 5.47 m^2, y range 4.61..7.09, x range 3.51..7.89 (all inside room D: False)
+  visible cells OUTSIDE room D: 0.06 m^2, e.g. [(3.51, 4.61), (3.61, 4.65), (3.51, 4.71), (3.61, 4.73), (3.71, 4.75), (3.81, 4.77)]
+
+-- Route clearances
+  min clearance of any reachable (rotate-anywhere) cell inside the building: 0.128 m (= 0.125 by construction)
+  free floor area reachable inside: 33.0 m^2
+
+-- Exact polygon gaps (design values; robot width 0.178, circumscribed radius 0.125)
+  facade doorway                                     0.900 m
+  narrow passage                                     0.700 m
+  wide opening                                       1.000 m
+  lobby->B opening                                   1.000 m
+  B->C doorway                                       0.900 m
+  E->D doorway                                       0.900 m
+  corridor clear width                               0.750 m
+  beam east end <-> east wall                        1.055 m
+  beam <-> y=4.8 wall west of D door                 0.908 m
+  beam <-> y=4.8 wall east of D door                 0.776 m
+  beam <-> lobby north wall (narrow-passage side)    0.756 m
+  beam <-> corridor east wall (west end)             0.000 m
+  lobby island <-> lobby north wall                  0.889 m
+  lobby island <-> facade                            0.746 m
+  pile_1 <-> y=4.8 wall (D door side)                0.451 m
+  pile_2 <-> east wall                               0.402 m
+  r_lobby_mid <-> lobby north wall                   0.710 m
+  corridor choke (blocked passage), pairwise gaps between corridor walls and fill pieces:
+    corr_w       <-> corr_fill_1  0.000 m
+    corr_w       <-> corr_fill_2  0.314 m
+    corr_w       <-> corr_fill_3  0.038 m
+    corr_w       <-> corr_fill_4  0.059 m
+    corr_e       <-> corr_fill_1  0.301 m
+    corr_e       <-> corr_fill_2  0.000 m
+    corr_e       <-> corr_fill_3  0.058 m
+    corr_e       <-> corr_fill_4  0.119 m
+    corr_fill_1  <-> corr_fill_2  0.000 m
+    corr_fill_1  <-> corr_fill_3  0.022 m
+    corr_fill_1  <-> corr_fill_4  0.000 m
+    corr_fill_2  <-> corr_fill_3  0.000 m
+    corr_fill_2  <-> corr_fill_4  0.000 m
+    corr_fill_3  <-> corr_fill_4  0.290 m
+  blocked facade doorway, pairwise gaps (jambs + fill):
+    facade_mid   <-> door_fill_1  0.000 m
+    door_fill_1  <-> door_fill_2  0.000 m
+    door_fill_2  <-> door_fill_3  0.000 m
+    door_fill_3  <-> facade_e     0.000 m

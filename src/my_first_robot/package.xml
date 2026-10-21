@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>my_first_robot</name>
+  <version>0.0.0</version>
+  <description>Disaster Bot: simulation-only TurtleBot3 search-and-approach mission for ROS 2 and Gazebo Sim (YOLO11n person detection, LiDAR distance estimation, frontier exploration, safety-gated motion).</description>
+  <maintainer email="184147642+cvmanasvi@users.noreply.github.com">Manasvi</maintainer>
+  <license>All rights reserved</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+
+  <!-- Launch files (disaster_bot_full.launch.py, robot.launch.py, disaster_bot.launch.py) -->
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <!-- disaster_bot_monitor: rcl_interfaces.msg.Log, rcl_interfaces.srv.GetParameters -->
+  <exec_depend>rcl_interfaces</exec_depend>
+  <!-- yolo_detector, camera_viewer -->
+  <exec_depend>cv_bridge</exec_depend>
+  <!-- Simulation started by disaster_bot_full.launch.py via disaster_site/launch/disaster_site.launch.py -->
+  <exec_depend>turtlebot3_gazebo</exec_depend>
+  <exec_depend>ros_gz_sim</exec_depend>
+  <exec_depend>ros_gz_bridge</exec_depend>
+  <exec_depend>ros_gz_image</exec_depend>
+  <!-- Started through turtlebot3_gazebo's robot_state_publisher.launch.py, which does not declare it -->
+  <exec_depend>robot_state_publisher</exec_depend>
+  <!-- Legacy battery_server / battery_client entry points -->
+  <exec_depend>example_interfaces</exec_depend>
+
+  <test_depend>builtin_interfaces</test_depend>
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_mypy</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>ament_xmllint</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

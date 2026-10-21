@@ -1,0 +1,20 @@
+== mission
+objects (world): {'victim(world)': ('person', 7.35, 6.65)}
+mission: t=7.90 [MISSION] OUTSIDE_SEARCH -> ENTERING (entrance_confirmed); t=70.50 [MISSION] ENTERING -> INSIDE (verified)
+explore steps used: 25; final state VICTIM_HOLD at t=916.90 (range 0.84 m <= 0.80 m)
+t=886.2 prioritized nav=(6.08,7.00) -> chosen #1 (best)
+     #1 score 0.585 feasible True conf 0.697 range 1.38 access 10.0 risk 0.00 terms {'confidence': 0.243, 'distance': 0.787, 'access': 0.75} checks ['+0:corridor_blocked', '+10:ok']
+t=886.2 confirmed track (7.23,7.707) {}
+t=886.2 approach_candidates +0:corridor_blocked, +10:ok
+t=886.2 approach_move track (7.23,7.707) {'offset_deg': 10.0, 'move_m': 0.5912821628897793}
+t=916.9 victim_hold track (7.294,7.67) {'candidate_id': 1, 'priority_score': 0.585448, 'candidates_considered': 1, 'reason': 'range 0.84 m <= 0.80 m'}
+GT min centre distance to victim(world) (person): 0.927 m at t=909.4
+VICTIM_HOLD t=916.9: robot GT (6.479,6.302); reported victim world (7.29,6.47) -> nearest person victim(world) (estimate error 0.189 m)
+   GT robot-centre distance to victim(world): 0.939 m
+   robot GT at end of run t=952.0: (6.481,6.303) moved 0.003 m after hold
+SAFETY controller zeroed 0 / capped 0; live keep-out cuts 0; pre-rotation refusals 0; escapes 0; tilt guard 0; FAULT_HOLD 0
+safety.log stop/limit lines (excluding startup config): []
+pubwatch samples 96 (sim 1.7680..947.9100):
+   p_yolo: ['1']   p_est: ['1']   p_search: ['0', '1']   p_safety: ['1']   n_yolo: ['1']   n_est: ['1']   n_search: ['0', '1']   n_safety: ['1']   pub_camera: ['1']   pub_det: ['1']   pub_dist: ['1']   pub_cmdraw: ['0', '1']   pub_cmd: ['1']   pub_found: ['0', '1']
+imu 190016 msgs: max |roll| 0.01 deg, max |pitch| 0.81 deg
+scans 4751: min raw LiDAR range 0.218 m at t=848.2 bearing 164

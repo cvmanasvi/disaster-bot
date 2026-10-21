@@ -1,0 +1,18 @@
+== mission
+objects (world): {'victim(world)': ('person', 7.35, 6.65)}
+mission: t=8.90 [MISSION] OUTSIDE_SEARCH -> ENTERING (entrance_confirmed); t=61.40 [MISSION] ENTERING -> INSIDE (verified)
+explore steps used: 24; final state VICTIM_HOLD at t=877.10 (range 0.83 m <= 0.80 m)
+t=846.7 prioritized nav=(6.08,7.00) -> chosen #1 (best)
+     #1 score 0.588 feasible True conf 0.700 range 1.37 access 10.0 risk 0.00 terms {'confidence': 0.249, 'distance': 0.789, 'access': 0.75} checks ['+0:corridor_blocked', '+10:ok']
+t=846.7 confirmed track (7.157,7.804) {}
+t=846.7 approach_candidates +0:corridor_blocked, +10:ok
+t=846.7 approach_move track (7.157,7.804) {'offset_deg': 10.0, 'move_m': 0.5849922199156203}
+t=877.1 victim_hold track (7.253,7.672) {'candidate_id': 1, 'priority_score': 0.58844, 'candidates_considered': 1, 'reason': 'range 0.83 m <= 0.80 m'}
+GT min centre distance to victim(world) (person): 0.932 m at t=869.2
+VICTIM_HOLD t=877.1: robot GT (6.458,6.336); reported victim world (7.25,6.47) -> nearest person victim(world) (estimate error 0.203 m)
+   GT robot-centre distance to victim(world): 0.945 m
+   robot GT at end of run t=910.9: (6.462,6.338) moved 0.004 m after hold
+SAFETY controller zeroed 0 / capped 0; live keep-out cuts 0; pre-rotation refusals 0; escapes 0; tilt guard 0; FAULT_HOLD 0
+safety.log stop/limit lines (excluding startup config): []
+pubwatch samples 96 (sim 1.7680..900.7050):
+   p_yolo: ['1']   p_est: ['1']   p_search: ['0', '1']   p_safety: ['1']   n_yolo: ['1']   n_est: ['1']   n_search: ['0', '1']   n_safety: ['1']   pub_camera: ['1']   pub_det: ['1']   pub_dist: ['1']   pub_cmdraw: ['0', '1']   pub_cmd: ['1']   pub_found: ['1']

@@ -1,0 +1,77 @@
+# Disaster Bot — repository root is the colcon workspace (~/ros2_ws).
+# The validated launch file resolves disaster_site/, yolo_env/, yolo11n.pt and
+# src/my_first_robot/... relative to this root, so the layout must stay as is.
+# Rules are anchored with a leading "/" wherever possible so they cannot hide
+# required files deeper in the tree (SDF worlds, models, textures, launch files,
+# tests, test/data fixtures, documentation).
+
+# --- colcon build products ---
+/build/
+/install/
+/log/
+
+# --- Python generated files ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# --- Separate YOLO Python environment (recreate from requirements-yolo*.txt) ---
+/yolo_env/
+venv/
+.venv/
+
+# --- YOLO model weights: obtained separately (see docs/YOLO_MODEL.md) ---
+/yolo11n.pt
+*.pt
+*.pth
+*.onnx
+*.engine
+*.torchscript
+
+# --- YOLO demo outputs and sample images (not used by the stack) ---
+/runs/
+/bus.jpg
+
+# --- Unused legacy model (walking actor; not part of the validated world) ---
+/disaster_models/
+
+# --- Tool-local state ---
+/.claude/
+
+# --- Editor backups ---
+*.save
+*~
+*.swp
+*.orig
+
+# --- Raw recordings and bulk run output (kept in the private evidence archive) ---
+*.mcap
+*.db3
+**/bag/
+**/scan_record/
+*.jsonl
+
+# --- Credentials, keys and local environment files ---
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*.p12
+*.pfx
+.netrc
+.git-credentials
+.pypirc
+
+# --- Internal release-preparation reports (not intended for publication) ---
+/docs/RELEASE_READINESS.md
+/docs/LICENSING_RESEARCH.md
+/docs/PROMPT2_RELEASE_AUDIT.md
+
+# --- Additional temporary and backup files ---
+*.bak
+*.pre_align_fix
+*_backup.py
