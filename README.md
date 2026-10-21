@@ -4,7 +4,7 @@
 ROS 2 Lyrical · Gazebo Sim 10 · TurtleBot3 `burger_cam` · YOLO11n · 2D LiDAR fusion
 
 > **Research prototype, simulation only.** It has not been tested on hardware and is not intended for real emergency use. The project
-> is **frozen** as of 2026-10-20. The final state and evidence are in `~/disaster_bot_test_logs/final_freeze_20261020_161801/`.
+> is **frozen** as of 2026-10-20. See [Final Status](final_docs_20261018/FINAL_STATUS.md), [Validation and Limitations](docs/VALIDATION_AND_LIMITATIONS.md), and the [published evidence index](evidence/README.md).
 > No licence to reuse the original code is granted; see [Licensing](#licensing).
 
 ## Problem
@@ -49,8 +49,9 @@ Gazebo (stationary robot)
 | `victim_distance_estimator` | Frozen: the highest-confidence forwarded box → LiDAR range and bearing (`/victim_distance`) |
 | `victim_localizer` | Advisory per-person localizer; not used by navigation |
 
-More detail: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). A source-level trace of the association, with its failure points, is in
-`~/disaster_bot_test_logs/localization_investigation_20261020_092718/PIPELINE_TRACE.md`.
+More detail: see [Architecture](docs/ARCHITECTURE.md) and
+[Validation and Limitations](docs/VALIDATION_AND_LIMITATIONS.md) for the
+pipeline design and known failure modes.
 
 ## Technologies
 
@@ -75,23 +76,21 @@ source install/setup.bash
 
 ## Safe stationary demonstration (the frozen demo)
 
-Step-by-step instructions, expected output and cleanup are in `~/disaster_bot_test_logs/final_freeze_20261020_161801/DEMO_INSTRUCTIONS.md`. In short, each terminal first runs `source ~/disaster_bot_test_logs/final_demo_20261017_232734/demo/demo_env.sh`:
+The freeze-specific instructions are documented in
+[Demo Guide](final_docs_20261018/DEMO_GUIDE.md). The original demonstration
+helper scripts and freeze logs reside outside this repository, so this is
+not currently a standalone, clone-and-run demonstration. See
+[Setup and Run](docs/SETUP_AND_RUN.md) for the repository's setup documentation.
 
-```bash
-ros2 launch $DEMO/site/launch/demo_sim.launch.py x_pose:=3.0 y_pose:=-6.6 yaw:=1.5708   # T1 simulation (headless)
-ros2 launch $DEMO/demo_stack.launch.py posture_enabled:=false                           # T2 perception + guard
-python3 -B $DEMO/watch.py                                                               # T3 read-only monitor
-$DEMO/scene.sh empty | standing | debris | lying                                        # T4 scene changes (teleport only)
-```
+> **Safety:** Do not run `disaster_bot_full.launch.py` or
+> `disaster_bot_posture.launch.py` for the stationary demo. They start
+> `safety_controller` and `autonomous_search`, which can initiate a moving mission.
 
-> **Do not** run `disaster_bot_full.launch.py` or `disaster_bot_posture.launch.py` for the demo. They start `safety_controller` and
-> `autonomous_search`, which begin a moving mission.
-
-## Results (all in simulation; evidence in `~/disaster_bot_test_logs/`)
+## Results (all in simulation; selected published evidence is indexed in [`evidence/`](evidence/README.md))
 
 | Evidence | Result |
 |---|---|
-| Stationary demo smoke run, 2026-10-20 (`final_freeze_…/FINAL_TEST_RESULTS.md`) | Standing person at 1.8 m: 262 / 262 boxes forwarded, distance **1.707 m** (1.698–1.720). Person behind debris and standing-behind-lying scenes: **100 % withheld** (`lidar_hit_below_box`). Empty scene: 0 detections. 0 `/cmd_vel` publishers or messages; 0 mm odometry. |
+| Stationary demo smoke run, 2026-10-20 (detailed freeze report is not included in this repository) | Standing person at 1.8 m: 262 / 262 boxes forwarded, distance **1.707 m** (1.698–1.720). Person behind debris and standing-behind-lying scenes: **100 % withheld** (`lidar_hit_below_box`). Empty scene: 0 detections. 0 `/cmd_vel` publishers or messages; 0 mm odometry. |
 | Automated tests, 2026-10-20 | **497 passed, 3 failed, 1 skipped**. The failures are long-standing and unchanged: one crossing-alignment test, flake8 style, pep257 docstrings. |
 | Controlled stationary validation, production chain, YOLO11n: 56 trials, 15 scenes, ground-truth scored (`e1b_validation_20261019_222632`) | Standing 950 / 950 correct (median error 0.016 m); prone 361 / 361; kneeling / crouching 1244 / 1244; sitting 78.9 % correct (the rest withheld, 0 wrong); victim touching wall / beam 91.6 % correct, 7.7 % wrong-surface |
 | Same validation: multi-person and occlusion | Close pairs: 78.4 % correct, 18.5 % "mixed" (distance within 0.05 m, but attribution ambiguous). Debris in front of the person: wrong-surface in 33 % (wider than the box) to **100 %** (debris inside the box span). |
@@ -130,7 +129,7 @@ docs/  evidence/      documentation and curated validation records
 requirements-yolo*.txt  YOLO venv requirements (direct pins + full lock)
 ```
 
-The workspace root must also contain `yolo_env/` and `yolo11n.pt`; neither is in the repository. Older dated reports in `docs/` describe earlier states; the README and the freeze directory reflect the final state.
+The workspace root must also contain `yolo_env/` and `yolo11n.pt`; neither is in the repository. Older dated reports describe earlier project states. This README reflects the frozen demonstration described above; freeze-specific logs and helper scripts are not included in this repository.
 
 ## Licensing
 
